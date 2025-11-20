@@ -1,5 +1,9 @@
 # Lazy loading and perf
 
+- Quand charger?
+- Comment charger? 
+- Quoi charger? 
+
 ## loading="lazy" on image
 
 ```html
@@ -9,10 +13,6 @@
 ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#loading
 
 ## Balise picture
-
-- Quand charger?
-- Comment charger? 
-- Quoi charger? 
 
 ```html
 <picture>
@@ -36,6 +36,12 @@ ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#lo
   <source srcset="photo.webp" type="image/webp" />
   <img src="photo.jpg" alt="photo" />
 </picture>
+```
+
+- Using Eleventy image plugin
+
+```bash
+yarn exec eleventy -- --serve
 ```
 
 ##
