@@ -1,27 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lazy loading</title>
-  <style>
-    body {
-      max-width: 1200px;
-    }
-    img {
-      border: solid black;
-      width: 100%;
-      height: auto;
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <h1>Web perfomance demo</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, corrupti neque ratione voluptate inventore consequuntur deserunt unde perferendis magni, impedit est quibusdam quam iure reiciendis ab suscipit facere cumque molestiae.</p>
-    <div style="height: 200vh;"></div>
-    <img src="./assets/villa.jpeg" alt="image alt" width="500" height="500" loading="lazy">
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nulla aliquam sint ad natus hic distinctio ab esse molestias obcaecati veritatis, magnam veniam velit iure earum et impedit ut sunt?. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit sit debitis, eaque placeat repellendus totam? Modi expedita impedit dolorum velit deleniti, explicabo nisi cumque inventore exercitationem nulla, quidem eveniet perspiciatis.</p>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazy loading</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Web perfomance demo</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt,
+        corrupti neque ratione voluptate inventore consequuntur deserunt unde
+        perferendis magni, impedit est quibusdam quam iure reiciendis ab
+        suscipit facere cumque molestiae.
+      </p>
+      <!-- <div style="height: 200vh;"></div> -->
+      <h2>Image</h2>
+      <img
+        src="./assets/photo.jpg"
+        alt="image"
+        loading="lazy"
+        width="640"
+        height="428"
+      />
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste nulla
+        aliquam sint ad natus hic distinctio ab esse molestias obcaecati
+        veritatis
+        <button>Payer</button>
+      </p>
+
+      <h2>Picture</h2>
+      <picture>
+        <source
+          media="(min-width: 801px)"
+          srcset="assets/desktop.avif"
+          type="image/avif" />
+        <source srcset="assets/mobile.avif" type="image/avif" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="assets/mobile.avif"
+          alt="banner"
+          width="2400"
+          height="1600"
+      /></picture>
+
+      <h2>Intersection Observer</h2>
+      <div class="ma-class">Partie 1</div>
+      <div class="ma-class">Partie 2</div>
+      <div class="ma-class">Partie 3</div>
+      <div class="ma-class">Partie 4</div>
+      <div class="ma-class">Partie 5</div>
+    </main>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              console.log(entry.target.innerHTML + " affichee");
+            }
+          });
+        },
+        {
+          threshold: 0,
+          rootMargin: "0px",
+        }
+      );
+      document.querySelectorAll(".ma-class").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
 </html>
